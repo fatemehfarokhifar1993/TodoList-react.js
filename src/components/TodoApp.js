@@ -7,27 +7,22 @@ const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [selectedOption, setSelectedOption] = useState("All");
-  
-  
-  
-  useEffect(()=>{
-    const savedTodos = JSON.parse(localStorage.getItem('todos'));
-    setTodos(savedTodos || []);
-}, [])
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    const savedTodos = JSON.parse(localStorage.getItem("todos"));
+    setTodos(savedTodos || []);
+  }, []);
 
-    filterTodos(selectedOption);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    filterTodos(selectedOption.value);
   }, [todos, selectedOption]);
 
-
-
-
   const addTodo = (input) => {
-    const newTodo = {   
-id:Date.now(),
-   text: input,
+    const newTodo = {
+      id: Date.now(),
+      text: input,
       isCompleted: false,
     };
     setTodos([...todos, newTodo]);
@@ -67,8 +62,8 @@ id:Date.now(),
     }
   };
   const selectHandler = (e) => {
-    setSelectedOption(e.target.value);
-    filterTodos(e.target.value);
+    setSelectedOption(e);
+    filterTodos(e.value);
   };
   return (
     <div className="container">
