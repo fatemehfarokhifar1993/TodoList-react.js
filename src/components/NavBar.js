@@ -1,9 +1,9 @@
 import Select from "react-select";
 
 const options = [
-  { value: "All", label: "All" },
-  { value: "Completed", label: "Completed" },
-  { value: "UnCompleted", label: "UnCompleted" },
+  { value: "All", label: "همه" },
+  { value: "Completed", label: "کامل شده" },
+  { value: "UnCompleted", label: "کامل نشده" },
 ];
 
 const NavBar = ({ unCompletedTodos, onChange, selectedOption }) => {
@@ -13,7 +13,7 @@ const NavBar = ({ unCompletedTodos, onChange, selectedOption }) => {
       width: "170px",
       backgroundColor: "#F0ABFC",
       border: "solid 1px #701A75",
-      cursor:"pointer",
+      cursor: "pointer",
     }),
     placeholder: (styles) => ({
       ...styles,
@@ -24,7 +24,7 @@ const NavBar = ({ unCompletedTodos, onChange, selectedOption }) => {
       backgroundColor: "#F0ABFC",
     }),
 
-    option: (styles, { data, isDisabled, isFocused}) => {
+    option: (styles, { data, isDisabled, isFocused }) => {
       return {
         ...styles,
         backgroundColor: isDisabled ? "#701A75" : "#F0ABFC",
@@ -44,6 +44,7 @@ const NavBar = ({ unCompletedTodos, onChange, selectedOption }) => {
         onChange={onChange}
         options={options}
         styles={customStyles}
+        defaultValue={options[0]}
       />
     </div>
   );
